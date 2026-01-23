@@ -211,20 +211,21 @@
         mods = <(MOD_LCTL|MOD_RCTL)>;
     };
 
-    // Ctrl+[ / Ctrl+] behavior: normal brackets, but Ctrl triggers browser back/forward
-    lbracket_morph: lbracket_morph {
+    // JIS [ key (physical) - sends RBKT normally, browser back with Ctrl
+    jis_lbracket_morph: jis_lbracket_morph {
         compatible = "zmk,behavior-mod-morph";
-        label = "LBRACKET_MORPH";
+        label = "JIS_LBRACKET_MORPH";
         #binding-cells = <0>;
-        bindings = <&kp LBKT>, <&kp C_AC_BACK>;
+        bindings = <&kp RBKT>, <&kp C_AC_BACK>;
         mods = <(MOD_LCTL|MOD_RCTL)>;
     };
 
-    rbracket_morph: rbracket_morph {
+    // JIS ] key (physical) - sends NUHS normally, browser forward with Ctrl
+    jis_rbracket_morph: jis_rbracket_morph {
         compatible = "zmk,behavior-mod-morph";
-        label = "RBRACKET_MORPH";
+        label = "JIS_RBRACKET_MORPH";
         #binding-cells = <0>;
-        bindings = <&kp RBKT>, <&kp C_AC_FORWARD>;
+        bindings = <&kp NUHS>, <&kp C_AC_FORWARD>;
         mods = <(MOD_LCTL|MOD_RCTL)>;
     };
     
@@ -301,8 +302,8 @@
  		bindings = <
         &kp ESC 	&kp F1 	               &kp F2 	                &kp F3 	                            &kp F4 	                &kp F5 	            &kp F6 	        &kp F7 	        &kp F8 	            &kp F9 	     &kp F10 	&kp F11 	         &kp F12 	         &kp DEL     
         &kp GRAVE	&kp N1 	               &kp N2 	                &kp N3 	                            &kp N4 	                &kp N5 	            &kp N6 	        &kp N7 	        &kp N8 	            &kp N9 	     &kp N0     &kp MINUS 	         &kp EQUAL 	         &kp INT3        &kp BSPC
-        &tab_morph 	&kp Q 	               &kp W                    &kp E 	                            &kp R 	                &kp T               &kp Y 	        &kp U 	        &kp I 	            &kp O 	     &kp P 		&lbracket_morph 	         &rbracket_morph 	         
-        &mo 4   	&kp A 	               &kp S 	                &kp D 	                            &kp F 	                &kp G 	            &kp H 	        &kp J 	        &kp K 	            &kp L 	     &kp SEMI 	&kp SQT              &kp NUHS            &kp RET
+        &tab_morph 	&kp Q 	               &kp W                    &kp E 	                            &kp R 	                &kp T               &kp Y 	        &kp U 	        &kp I 	            &kp O 	     &kp P 		&kp LBKT 	         &jis_lbracket_morph 	         
+        &mo 4   	&kp A 	               &kp S 	                &kp D 	                            &kp F 	                &kp G 	            &kp H 	        &kp J 	        &kp K 	            &kp L 	     &kp SEMI 	&kp SQT              &jis_rbracket_morph            &kp RET
         &kp LSHFT                          &kp Z 	                &kp X 	                            &kp C 	                &kp V 	            &kp B 	        &kp N 	        &kp M 	            &kp COMMA    &kp DOT    &kp FSLH             &kp INT1            &kp RSHFT
         &kp LCTRL 	&kp LGUI               &kp LALT                 &kp INT5             &kp SPACE              		                                            &kp INT4                       &kp RALT 	        &mo 3 		  &kp LEFT 	 &kp UP      &kp DOWN 	&kp RIGHT 	
         //
