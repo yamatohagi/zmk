@@ -246,12 +246,12 @@
         mods = <(MOD_LCTL|MOD_RCTL)>;
     };
 
-    // JIS ] key (physical, Enter左隣) - sends BSLH normally, Alt+Right (browser forward) with Ctrl
+    // JIS ] key (physical, Enter左隣) - sends NUHS normally, Alt+Right (browser forward) with Ctrl
     jis_rbracket_morph: jis_rbracket_morph {
         compatible = "zmk,behavior-mod-morph";
         label = "JIS_RBRACKET_MORPH";
         #binding-cells = <0>;
-        bindings = <&kp BSLH>, <&alt_right>;
+        bindings = <&kp NUHS>, <&alt_right>;
         mods = <(MOD_LCTL|MOD_RCTL)>;
     };
     
