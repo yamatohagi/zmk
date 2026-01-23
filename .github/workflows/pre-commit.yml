@@ -3,6 +3,8 @@ name: pre-commit
 on:
   pull_request:
   push:
+    branches-ignore:
+      - keychron_bpro
 
 jobs:
   pre-commit:
