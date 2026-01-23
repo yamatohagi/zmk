@@ -159,7 +159,9 @@
         tap-ms = <0>;
         bindings = 
             <&macro_press &kp LCTRL>,
-            <&macro_tap &kp TAB>;
+            <&macro_tap &kp TAB>,
+            <&macro_pause_for_release>,
+            <&macro_release &kp LCTRL>;
     };
 
     // Kill line macro (Shift+End then Delete)
