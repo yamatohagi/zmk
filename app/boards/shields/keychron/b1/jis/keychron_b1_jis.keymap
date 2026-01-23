@@ -288,7 +288,7 @@
         &tab_morph 	&kp Q 	               &kp W                    &kp E 	                            &kp R 	                &kp T               &kp Y 	        &kp U 	        &kp I 	            &kp O 	     &kp P 		&kp LBKT 	         &kp RBKT 	         
         &mo 4   	&kp A 	               &kp S 	                &kp D 	                            &kp F 	                &kp G 	            &kp H 	        &kp J 	        &kp K 	            &kp L 	     &kp SEMI 	&kp SQT              &kp NUHS            &kp RET
         &kp LSHFT                          &kp Z 	                &kp X 	                            &kp C 	                &kp V 	            &kp B 	        &kp N 	        &kp M 	            &kp COMMA    &kp DOT    &kp FSLH             &kp INT1            &kp RSHFT
-        &kp LCTRL 	&kp LGUI               &kp LALT                 &kp INT5             &kp SPACE              		                                            &kp INT4                       &kp RALT 	        &mo 3 		  &kp LEFT 	 &kp UP      &kp DOWN 	&kp RIGHT 	
+        &mo 5   	&kp LGUI               &kp LALT                 &kp INT5             &kp SPACE              		                                            &kp INT4                       &kp RALT 	        &mo 3 		  &kp LEFT 	 &kp UP      &kp DOWN 	&kp RIGHT 	
         //
         &none       &out OUT_BLE           &out OUT_24G             &out OUT_CHG                        &out OUT_CHGD 
             >;
@@ -317,6 +317,20 @@
         &trans  &home_twice             &trans                      &kp DEL                             &kp RIGHT               &trans              &kp BSPC        &trans          &kill_line          &trans      &trans      &trans                      &trans               &trans
         &trans                          &trans                      &trans                              &trans                  &kp LG(V)           &kp LEFT        &kp DOWN        &trans              &trans      &trans      &trans                      &trans               &trans
         &trans  &trans                  &trans                      &trans     &trans                                                                               &trans                              &trans              &trans      &trans      &trans       &trans      &trans
+        //
+        &none   &none                   &none                       &none                               &none
+            >;
+        };
+
+        // Ctrl layer - Tab becomes Alt+Tab, all other keys send Ctrl+key
+        layer_five {
+        bindings = <
+        &kp LC(ESC) &kp LC(F1)          &kp LC(F2)                  &kp LC(F3)                          &kp LC(F4)              &kp LC(F5)          &kp LC(F6)      &kp LC(F7)      &kp LC(F8)          &kp LC(F9)  &kp LC(F10) &kp LC(F11)                 &kp LC(F12)         &kp LC(DEL)
+        &kp LC(GRAVE) &kp LC(N1)        &kp LC(N2)                  &kp LC(N3)                          &kp LC(N4)              &kp LC(N5)          &kp LC(N6)      &kp LC(N7)      &kp LC(N8)          &kp LC(N9)  &kp LC(N0)  &kp LC(MINUS)               &kp LC(EQUAL)       &kp LC(INT3)   &kp LC(BSPC)
+        &kp LA(TAB) &kp LC(Q)           &kp LC(W)                   &kp LC(E)                           &kp LC(R)               &kp LC(T)           &kp LC(Y)       &kp LC(U)       &kp LC(I)           &kp LC(O)   &kp LC(P)   &kp LC(LBKT)                &kp LC(RBKT)
+        &kp LC(CLCK) &kp LC(A)          &kp LC(S)                   &kp LC(D)                           &kp LC(F)               &kp LC(G)           &kp LC(H)       &kp LC(J)       &kp LC(K)           &kp LC(L)   &kp LC(SEMI) &kp LC(SQT)                &kp LC(NUHS)        &kp LC(RET)
+        &kp LS(LCTRL)                   &kp LC(Z)                   &kp LC(X)                           &kp LC(C)               &kp LC(V)           &kp LC(B)       &kp LC(N)       &kp LC(M)           &kp LC(COMMA) &kp LC(DOT) &kp LC(FSLH)              &kp LC(INT1)        &kp RS(LCTRL)
+        &trans      &kp LC(LGUI)        &kp LC(LALT)                &kp LC(INT5) &kp LC(SPACE)                                                                      &kp LC(INT4)                        &kp LC(RALT)        &kp LC(RCTRL) &kp LC(LEFT) &kp LC(UP) &kp LC(DOWN) &kp LC(RIGHT)
         //
         &none   &none                   &none                       &none                               &none
             >;
