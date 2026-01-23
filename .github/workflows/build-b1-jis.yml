@@ -36,6 +36,10 @@ jobs:
         run: west init -l app
       - name: Update modules (west update)
         run: west update
+      - name: Apply Zephyr patches
+        run: |
+          cd zephyr
+          git apply ../0001-esb-nrf-fix.patch
       - name: Export Zephyr CMake package (west zephyr-export)
         run: west zephyr-export
       - name: Build Keychron B1 JIS
