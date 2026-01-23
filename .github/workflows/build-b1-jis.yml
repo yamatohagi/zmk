@@ -39,7 +39,7 @@ jobs:
       - name: Apply Zephyr patches
         run: |
           cd zephyr
-          git apply ../0001-esb-nrf-fix.patch
+          git apply --whitespace=fix --3way ../0001-esb-nrf-fix.patch || git apply --whitespace=fix ../0001-esb-nrf-fix.patch || patch -p1 < ../0001-esb-nrf-fix.patch
       - name: Export Zephyr CMake package (west zephyr-export)
         run: west zephyr-export
       - name: Build Keychron B1 JIS
