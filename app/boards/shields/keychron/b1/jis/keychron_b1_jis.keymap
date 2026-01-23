@@ -211,21 +211,21 @@
         mods = <(MOD_LCTL|MOD_RCTL)>;
     };
 
-    // JIS [ key (physical) - sends RBKT normally, browser back with Ctrl
+    // JIS [ key (physical) - sends RBKT normally, Alt+Left (browser back) with Ctrl
     jis_lbracket_morph: jis_lbracket_morph {
         compatible = "zmk,behavior-mod-morph";
         label = "JIS_LBRACKET_MORPH";
         #binding-cells = <0>;
-        bindings = <&kp RBKT>, <&kp C_AC_BACK>;
+        bindings = <&kp RBKT>, <&kp LA(LEFT)>;
         mods = <(MOD_LCTL|MOD_RCTL)>;
     };
 
-    // JIS ] key (physical) - sends NUHS normally, browser forward with Ctrl
+    // JIS ] key (physical) - sends NUHS normally, Alt+Right (browser forward) with Ctrl
     jis_rbracket_morph: jis_rbracket_morph {
         compatible = "zmk,behavior-mod-morph";
         label = "JIS_RBRACKET_MORPH";
         #binding-cells = <0>;
-        bindings = <&kp NUHS>, <&kp C_AC_FORWARD>;
+        bindings = <&kp NUHS>, <&kp LA(RIGHT)>;
         mods = <(MOD_LCTL|MOD_RCTL)>;
     };
     
