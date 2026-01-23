@@ -1,0 +1,49 @@
+name: Build Keychron B1 JIS
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "app/boards/shields/keychron/b1/jis/**"
+      - ".github/workflows/build-b1-jis.yml"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: docker.io/zmkfirmware/zmk-build-arm:3.2
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Cache west modules
+        uses: actions/cache@v4
+        env:
+          cache-name: cache-zephyr-modules
+        with:
+          path: |
+            modules/
+            tools/
+            zephyr/
+            bootloader/
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('app/west.yml') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+        timeout-minutes: 2
+        continue-on-error: true
+      - name: Initialize workspace (west init)
+        run: west init -l app
+      - name: Update modules (west update)
+        run: west update
+      - name: Export Zephyr CMake package (west zephyr-export)
+        run: west zephyr-export
+      - name: Build Keychron B1 JIS
+        run: |
+          cd app
+          west build -b keychron -- -DSHIELD=keychron_b1_jis
+      - name: Upload firmware
+        uses: actions/upload-artifact@v4
+        with:
+          name: keychron_b1_jis_firmware
+          path: app/build/zephyr/zmk.uf2
