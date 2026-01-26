@@ -218,7 +218,10 @@
         #binding-cells = <0>;
         wait-ms = <0>;
         tap-ms = <0>;
-        bindings = <&macro_release &kp LCTRL &kp RCTRL>, <&kp LA(LEFT)>;
+        bindings = 
+            <&macro_release &kp LCTRL>,
+            <&macro_release &kp RCTRL>,
+            <&macro_tap &kp LA(LEFT)>;
     };
 
     // Alt+Right macro for browser forward
@@ -228,7 +231,10 @@
         #binding-cells = <0>;
         wait-ms = <0>;
         tap-ms = <0>;
-        bindings = <&macro_release &kp LCTRL &kp RCTRL>, <&kp LA(RIGHT)>;
+        bindings = 
+            <&macro_release &kp LCTRL>,
+            <&macro_release &kp RCTRL>,
+            <&macro_tap &kp LA(RIGHT)>;
     };
 
     // JIS [ key (physical, Pの2つ右) - sends RBKT ([) normally, Alt+Left (browser back) with Ctrl
