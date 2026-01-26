@@ -216,8 +216,8 @@
         compatible = "zmk,behavior-macro";
         label = "ALT_LEFT_HOLD";
         #binding-cells = <0>;
-        wait-ms = <30>;
-        tap-ms = <30>;
+        wait-ms = <50>;
+        tap-ms = <50>;
         bindings = 
             <&macro_press &kp LALT>,
             <&macro_tap &kp LEFT>,
@@ -230,8 +230,8 @@
         compatible = "zmk,behavior-macro";
         label = "ALT_RIGHT_HOLD";
         #binding-cells = <0>;
-        wait-ms = <30>;
-        tap-ms = <30>;
+        wait-ms = <50>;
+        tap-ms = <50>;
         bindings = 
             <&macro_press &kp LALT>,
             <&macro_tap &kp RIGHT>,
