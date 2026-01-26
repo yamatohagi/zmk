@@ -211,32 +211,48 @@
         mods = <(MOD_LCTL|MOD_RCTL)>;
     };
 
-    // Alt+Left hold macro for browser back (hold for continuous)
-    alt_left_hold: alt_left_hold {
+    // Alt+Left macro for browser back (with 50ms delay)
+    alt_left: alt_left {
         compatible = "zmk,behavior-macro";
-        label = "ALT_LEFT_HOLD";
+        label = "ALT_LEFT";
         #binding-cells = <0>;
         wait-ms = <50>;
         tap-ms = <50>;
         bindings = 
-            <&macro_press &kp LALT>,
-            <&macro_tap &kp LEFT>,
-            <&macro_pause_for_release>,
-            <&macro_release &kp LALT>;
+            <&macro_release &kp LCTRL>,
+            <&macro_release &kp RCTRL>,
+            <&macro_tap &kp LA(LEFT)>;
     };
 
-    // Alt+Right hold macro for browser forward (hold for continuous)
-    alt_right_hold: alt_right_hold {
+    // Alt+Right macro for browser forward (with 50ms delay)
+    alt_right: alt_right {
         compatible = "zmk,behavior-macro";
-        label = "ALT_RIGHT_HOLD";
+        label = "ALT_RIGHT";
         #binding-cells = <0>;
         wait-ms = <50>;
         tap-ms = <50>;
         bindings = 
-            <&macro_press &kp LALT>,
-            <&macro_tap &kp RIGHT>,
-            <&macro_pause_for_release>,
-            <&macro_release &kp LALT>;
+            <&macro_release &kp LCTRL>,
+            <&macro_release &kp RCTRL>,
+            <&macro_tap &kp LA(RIGHT)>;
+    };
+
+    // JIS [ key (physical, Pの2つ右) - sends RBKT ([) normally, Alt+Left (browser back) with Ctrl
+    jis_lbracket_morph: jis_lbracket_morph {
+        compatible = "zmk,behavior-mod-morph";
+        label = "JIS_LBRACKET_MORPH";
+        #binding-cells = <0>;
+        bindings = <&kp RBKT>, <&alt_left>;
+        mods = <(MOD_LCTL|MOD_RCTL)>;
+    };
+
+    // JIS ] key (physical, Enter左隣) - sends BSLH (]) normally, Alt+Right (browser forward) with Ctrl
+    jis_rbracket_morph: jis_rbracket_morph {
+        compatible = "zmk,behavior-mod-morph";
+        label = "JIS_RBRACKET_MORPH";
+        #binding-cells = <0>;
+        bindings = <&kp BSLH>, <&alt_right>;
+        mods = <(MOD_LCTL|MOD_RCTL)>;
     };
     
 
@@ -312,8 +328,8 @@
  		bindings = <
         &kp ESC 	&kp F1 	               &kp F2 	                &kp F3 	                            &kp F4 	                &kp F5 	            &kp F6 	        &kp F7 	        &kp F8 	            &kp F9 	     &kp F10 	&kp F11 	         &kp F12 	         &kp DEL     
         &kp GRAVE	&kp N1 	               &kp N2 	                &kp N3 	                            &kp N4 	                &kp N5 	            &kp N6 	        &kp N7 	        &kp N8 	            &kp N9 	     &kp N0     &kp MINUS 	         &kp EQUAL 	         &kp INT3        &kp BSPC
-        &tab_morph 	&kp Q 	               &kp W                    &kp E 	                            &kp R 	                &kp T               &kp Y 	        &kp U 	        &kp I 	            &kp O 	     &kp P 		&kp LBKT 	         &kp RBKT 	         
-        &mo 4   	&kp A 	               &kp S 	                &kp D 	                            &kp F 	                &kp G 	            &kp H 	        &kp J 	        &kp K 	            &kp L 	     &kp SEMI 	&kp SQT              &kp BSLH             &kp RET
+        &tab_morph 	&kp Q 	               &kp W                    &kp E 	                            &kp R 	                &kp T               &kp Y 	        &kp U 	        &kp I 	            &kp O 	     &kp P 		&kp LBKT 	         &jis_lbracket_morph 	         
+        &mo 4   	&kp A 	               &kp S 	                &kp D 	                            &kp F 	                &kp G 	            &kp H 	        &kp J 	        &kp K 	            &kp L 	     &kp SEMI 	&kp SQT              &jis_rbracket_morph            &kp RET
         &kp LSHFT                          &kp Z 	                &kp X 	                            &kp C 	                &kp V 	            &kp B 	        &kp N 	        &kp M 	            &kp COMMA    &kp DOT    &kp FSLH             &kp INT1            &kp RSHFT
         &kp LCTRL 	&kp LGUI               &kp LALT                 &kp INT5             &kp SPACE              		                                            &kp INT4                       &kp RALT 	        &mo 3 		  &kp LEFT 	 &kp UP      &kp DOWN 	&kp RIGHT 	
         //
@@ -326,8 +342,8 @@
                     //f1                    //f2                    //f3                                //f4                        //f5            //f6              //f7            //f8              //f9        //f10           //f11                         //f12          
         &trans  &kp C_BRIGHTNESS_DEC    &kp C_BRIGHTNESS_INC        &uc LG(TAB)                         &uc LG(E)               &kp C_AC_SEARCH     &uc LG(L)       &kp C_PREVIOUS  &kp C_PLAY_PAUSE    &kp C_NEXT  &kp C_MUTE  &kp C_VOLUME_DOWN           &kp C_VOLUME_UP      &trans
         &trans  &bt_pair_0 0 0          &bt_pair_1 0 0              &bt_pair_2 0 0                      &bt_pair_3 0 0          &trans              &trans          &trans          &trans              &trans      &trans      &trans                      &kp C_AL_CALC        &trans     &trans
-        &alt_tab_hold  &trans                  &trans                      &trans                              &trans                  &trans              &trans          &trans          &kp INS             &trans      &trans      &trans                      &alt_left_hold                     
-        &trans  &trans                  &trans                      &trans                              &trans                  &trans              &trans          &trans          &trans              &trans      &trans      &trans                      &alt_right_hold               &trans  
+        &alt_tab_hold  &trans                  &trans                      &trans                              &trans                  &trans              &trans          &trans          &kp INS             &trans      &trans      &trans                      &trans                     
+        &trans  &trans                  &trans                      &trans                              &trans                  &trans              &trans          &trans          &trans              &trans      &trans      &trans                      &trans               &trans  
         &trans                          &trans                      &trans                              &trans                  &trans              &trans          &trans          &trans              &trans      &trans      &trans                      &trans               &uc LG(DOT) 
         &trans  &trans                  &trans                      &trans     &trans                                                                               &trans                              &kp RCTRL           &trans      &kp HOME    &kp PG_UP    &kp PG_DN   &kp END    
         //
