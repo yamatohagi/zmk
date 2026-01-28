@@ -237,6 +237,19 @@
             <&macro_release &kp LALT>;
     };
 
+    // Alt+U macro for undo (with delay)
+    alt_u: alt_u {
+        compatible = "zmk,behavior-macro";
+        label = "ALT_U";
+        #binding-cells = <0>;
+        wait-ms = <30>;
+        tap-ms = <30>;
+        bindings = 
+            <&macro_press &kp LALT>,
+            <&macro_tap &kp U>,
+            <&macro_release &kp LALT>;
+    };
+
     // Win+V sends F13 instead of clipboard history
     v_morph: v_morph {
         compatible = "zmk,behavior-mod-morph";
@@ -370,7 +383,7 @@
         &trans  &trans                  &trans                      &trans                              &trans                  &trans              &trans          &trans          &trans              &trans      &trans      &trans                      &trans               &trans     &trans
         &ctrl_tab_hold  &trans          &trans                      &kp END                             &trans                  &trans              &trans          &trans          &trans              &trans      &kp UP      &trans                      &trans
         &trans  &home_twice             &trans                      &kp DEL                             &kp RIGHT               &trans              &kp BSPC        &trans          &kill_line          &trans      &trans      &trans                      &trans               &trans
-        &trans                          &trans                      &trans                              &kp LC(C)               &kp LA(U)           &kp LEFT        &kp DOWN        &trans              &trans      &trans      &trans                      &trans               &trans
+        &trans                          &trans                      &trans                              &kp LC(C)               &alt_u              &kp LEFT        &kp DOWN        &trans              &trans      &trans      &trans                      &trans               &trans
         &trans  &trans                  &trans                      &trans     &trans                                                                               &trans                              &trans              &trans      &trans      &trans       &trans      &trans
         //
         &none   &none                   &none                       &none                               &none
